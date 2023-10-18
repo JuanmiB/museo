@@ -1,0 +1,14 @@
+.field{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px;;
+    border: solid 1px #A73121;
+    border-radius: 25px;
+    background: #F2E8C6;
+    box-shadow: 0px 0px 25px 0px rgba(0,0,0,1);
+    margin:30px
+    
+}
