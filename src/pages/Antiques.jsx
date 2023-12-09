@@ -1,21 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import Item from '../components/Item'
 import './antiques.css'
 import { antiguedades as initialItems } from '../data/objetos'
-import { useState } from 'react'
+import Search from '../components/Search'
 
 const Antiques = () => {
-  const [filter, setFilter] = useState({
-    category: 'all'
-  })
-  function filterByCategory(initialItems) {
-    if (filter.category === 'all') {
-      return initialItems
-    } else {
-      return initialItems.filter(item => item.category === filter.category)
+  const antiques = initialItems
+  const [filterHeroes, setFilterAntiques] = useState('')
+
+  const filteredAntiques = (antiques) => {
+    return antiques.filter(antique => {
+      return antique.nombre.toLowerCase().includes(filterHeroes.toLowerCase())
     }
+    )
   }
+
   return (
     <motion.div
     initial={{ opacity: 0 }}
@@ -24,7 +24,8 @@ const Antiques = () => {
     >
 
       <h1>Antiguedades</h1>
-      <Item products={filterByCategory(initialItems)}/>
+    <Search setFilterAntiques={setFilterAntiques} />
+      <Item products={filteredAntiques(antiques)}/>
     </motion.div>
   )
 }
